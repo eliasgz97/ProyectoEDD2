@@ -40,16 +40,17 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField2" max="32767" attributes="0"/>
-                                  <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField5" alignment="0" pref="188" max="32767" attributes="0"/>
-                                  <Component id="jComboBox1" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
-                                  <Component id="jComboBox2" max="32767" attributes="0"/>
+                                  <Component id="jtxt_nombreotema_proyecto" max="32767" attributes="0"/>
+                                  <Component id="jtxt_investigador_proyectos" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtxt_fechainicio_proyecto" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtxt_fecha_finproyecto" alignment="0" pref="188" max="32767" attributes="0"/>
+                                  <Component id="jcb_estado_proyecto" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                                  <Component id="jtxt_codigo_proyecto" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jbt_guardarproyecto" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="177" max="32767" attributes="0"/>
+                      <EmptySpace pref="109" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -62,36 +63,38 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                              <Component id="jComboBox2" min="-2" pref="29" max="-2" attributes="0"/>
+                              <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                              <Component id="jtxt_codigo_proyecto" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="jtxt_nombreotema_proyecto" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jtxt_investigador_proyectos" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField4" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="jtxt_fechainicio_proyecto" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField5" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="jtxt_fecha_finproyecto" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="jcb_estado_proyecto" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="jbt_guardarproyecto" min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -145,13 +148,13 @@
                 <Property name="text" type="java.lang.String" value="FECHA FIN"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="jtxt_nombreotema_proyecto">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="jtxt_investigador_proyectos">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="jtxt_fechainicio_proyecto">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField5">
+            <Component class="javax.swing.JTextField" name="jtxt_fecha_finproyecto">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
@@ -161,7 +164,7 @@
                 <Property name="text" type="java.lang.String" value="ESTADO"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="jcb_estado_proyecto">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -176,15 +179,18 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox2">
+            <Component class="javax.swing.JTextField" name="jtxt_codigo_proyecto">
+            </Component>
+            <Component class="javax.swing.JButton" name="jbt_guardarproyecto">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="AGREGAR"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbt_guardarproyectoMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -196,31 +202,497 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="151" max="32767" attributes="0"/>
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="406" max="32767" attributes="0"/>
-              </Group>
+              <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Container class="javax.swing.JPanel" name="jPanel2">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
+                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jtxt_proyecto_codigo" max="32767" attributes="0"/>
+                                  <Component id="jtxt_codigo_publicacion" max="32767" attributes="0"/>
+                                  <Component id="jtxt_fecha_publicaciones" max="32767" attributes="0"/>
+                                  <Component id="jcbox_tipo_publicacion" alignment="0" pref="149" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="127" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jbt_guardar_publicacion" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxt_codigo_publicacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxt_proyecto_codigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxt_fecha_publicaciones" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbox_tipo_publicacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jbt_guardar_publicacion" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel8">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="24" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Publicaciones"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel9">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="C&#xd3;DIGO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtxt_codigo_publicacion">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel10">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="PROYECTO (C&#xd3;DIGO)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtxt_proyecto_codigo">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel11">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="FECHA"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtxt_fecha_publicaciones">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel12">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="TIPO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcbox_tipo_publicacion">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Revista"/>
+                    <StringItem index="1" value="Conferencia"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="jbt_guardar_publicacion">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="AGREGAR"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbt_guardar_publicacionMouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JDialog" name="Carreras">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel3">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
+                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jtxt_nombre_carrera" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jtxt_codigo_carrera" min="-2" pref="153" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jcb_estado_carrera" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jbt_agregar_carrera" min="-2" pref="124" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="146" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxt_codigo_carrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxt_nombre_carrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcb_estado_carrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="jbt_agregar_carrera" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel13">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="CARRERAS"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel14">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="C&#xd3;DIGO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel15">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="NOMBRE"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel16">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="ESTADO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtxt_codigo_carrera">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtxt_nombre_carrera">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcb_estado_carrera">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Activo"/>
+                    <StringItem index="1" value="Inactivo"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="jbt_agregar_carrera">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="AGREGAR"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JDialog" name="Investigadores">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="24" style="1"/>
+              <Font name="Tahoma" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Publicaciones"/>
           </Properties>
-        </Component>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
+                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jtxt_fecha_ingreso" min="-2" pref="169" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jtxt_codigo_investigador" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jtxt_nombre_investigador" min="-2" pref="168" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jtxt_code_carrera" min="-2" pref="169" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jcb_estado_investigador" min="-2" pref="169" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
+                              <Component id="jbt_agregar_investigador" min="-2" pref="149" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="96" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxt_codigo_investigador" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxt_nombre_investigador" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxt_fecha_ingreso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxt_code_carrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcb_estado_investigador" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="jbt_agregar_investigador" min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace pref="86" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel17">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="INVESTIGADORES"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel18">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="C&#xd3;DIGO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel19">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="NOMBRE"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel20">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="FECHA DE INGRESO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel21">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="C&#xd3;DIGO DE CARERRA"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel22">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="ESTADO"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtxt_codigo_investigador">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtxt_nombre_investigador">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtxt_fecha_ingreso">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtxt_code_carrera">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcb_estado_investigador">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Activo"/>
+                    <StringItem index="1" value="Inactivo"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="jbt_agregar_investigador">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="AGREGAR"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbt_agregar_investigadorMouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </NonVisualComponents>
@@ -249,13 +721,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="proyectos" pref="166" max="32767" attributes="0"/>
-                  <Component id="carreras" max="32767" attributes="0"/>
+                  <Component id="jbt_proyectos" pref="166" max="32767" attributes="0"/>
+                  <Component id="jbt_carreras" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="investigadores" pref="171" max="32767" attributes="0"/>
-                  <Component id="publicaciones" max="32767" attributes="0"/>
+                  <Component id="jbt_investigadores" pref="171" max="32767" attributes="0"/>
+                  <Component id="jbt_publicaciones" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="57" max="32767" attributes="0"/>
           </Group>
@@ -266,13 +738,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="investigadores" max="32767" attributes="0"/>
-                  <Component id="carreras" pref="59" max="32767" attributes="0"/>
+                  <Component id="jbt_investigadores" max="32767" attributes="0"/>
+                  <Component id="jbt_carreras" pref="59" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="122" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="proyectos" pref="59" max="32767" attributes="0"/>
-                  <Component id="publicaciones" max="32767" attributes="0"/>
+                  <Component id="jbt_proyectos" pref="59" max="32767" attributes="0"/>
+                  <Component id="jbt_publicaciones" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
           </Group>
@@ -280,23 +752,29 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="carreras">
+    <Component class="javax.swing.JButton" name="jbt_carreras">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Carreras"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbt_carrerasMouseClicked"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="investigadores">
+    <Component class="javax.swing.JButton" name="jbt_investigadores">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Investigadores"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbt_investigadoresMouseClicked"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="proyectos">
+    <Component class="javax.swing.JButton" name="jbt_proyectos">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="1"/>
@@ -304,10 +782,10 @@
         <Property name="text" type="java.lang.String" value="Proyectos"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="proyectosMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbt_proyectosMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="publicaciones">
+    <Component class="javax.swing.JButton" name="jbt_publicaciones">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="1"/>
@@ -315,7 +793,7 @@
         <Property name="text" type="java.lang.String" value="Publicaciones"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="publicacionesMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbt_publicacionesMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

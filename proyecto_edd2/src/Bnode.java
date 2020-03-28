@@ -1,16 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 
 import java.io.Serializable;
 
-/**
- *
- * @author edas
- */
 public class Bnode implements Serializable {
     
     protected KRRN keys[];//keys 
@@ -27,10 +17,4 @@ public class Bnode implements Serializable {
         n=0;
         
     }
-
-    
-    
-    
-    
-    
 }
