@@ -19,16 +19,25 @@ public class AdmArchivo {
 
     private ArrayList<Integer> bytes = new ArrayList();
     private File archivo = null;
-    private File archivo_reg = null;
+    private File archivo_inv = null;
     private Btree arbol;
-    ArrayList<Investigadores> investigadores;
+    ArrayList<Investigadores> investigadores=new ArrayList();
     Investigadores investigador;
 
     LinkedList <Integer> availist=new LinkedList<>();
+
+    public ArrayList<Investigadores> getInvestigadores() {
+        return investigadores;
+    }
+
+    public void setInvestigadores(ArrayList<Investigadores> investigadores) {
+        this.investigadores = investigadores;
+    }
+    
     public AdmArchivo(String path) {
         archivo = new File(path);
-        investigador = new Investigadores();
-        archivo_reg = new File(archivo.getParent() + "\\reg_" + archivo.getName());//me crea un archivo de registros en el mismo sitio de la metadata
+        //investigador = new Investigadores();
+        archivo_inv = new File(path);//me crea un archivo de investigadores en el mismo sitio de la metadata
         arbol = new Btree(5);
     }
     
@@ -74,12 +83,13 @@ public class AdmArchivo {
 
 
     
-    public Investigadores getRegistro() {
+    public Investigadores getRegistroInv() {
         return investigador;
     }
 
     public void setRegistro(Investigadores investigador) {
         this.investigador = investigador;
+        investigadores.add(investigador);
     }
 
     public File getArchivo() {
@@ -104,12 +114,12 @@ public class AdmArchivo {
     //for obj
     public void write_obj_registro() {//escribe un objeto registro al final del archivo de registros
         try {
-            File filename = new File(archivo_reg.getPath());
+            File filename = new File(archivo_inv.getPath());
             ObjectOutputStream escribir = new ObjectOutputStream(new FileOutputStream(filename, true));
             escribir.writeObject(investigador);
             escribir.close();
 
-            //escribir en reg para prueba de tamaño
+         //   escribir en reg para prueba de tamaño
             File filetest = new File("reg.bin");
             ObjectOutputStream escribir_test = new ObjectOutputStream(new FileOutputStream(filetest));
             escribir_test.writeObject(investigador);
@@ -156,23 +166,27 @@ public class AdmArchivo {
         }
     }
 
-    public void read_obj_registro() throws ClassNotFoundException {//lee un objeto registro
+    public Investigadores read_obj_registro() throws ClassNotFoundException {//lee un objeto registro
         File filename = new File("reg.bin");
+        Investigadores inv = null;
         try {
             ObjectInputStream leer = new ObjectInputStream(new FileInputStream(filename));
             investigador = (Investigadores) leer.readObject();
+            inv=(Investigadores)leer.readObject();
             leer.close();
+             System.out.println(investigador.getNombreInvestigador());
 
         } catch (IOException e) {
 
         }
+        return investigador;
     }
 
     public void write_registro_in_bytes(int pos_in_archivo) {//sobreescribe un registro en el archivo de registros
 
         try {
 
-            RandomAccessFile escribir = new RandomAccessFile(archivo_reg.getPath(), "rw");
+            RandomAccessFile escribir = new RandomAccessFile(archivo_inv.getPath(), "rw");
 
             //nos posicionamos en el archivo
             escribir.seek(pos_in_archivo);
@@ -217,7 +231,7 @@ public class AdmArchivo {
 
     public void read_registro_in_bytes(int pos_in_archivo, int tamaño_registro_enbytes) throws ClassNotFoundException {//lee un registro del archivo de registros en bytes
 
-        File filename = new File(archivo_reg.getPath());
+        File filename = new File(archivo_inv.getPath());
         
         try {
 
@@ -265,8 +279,13 @@ public class AdmArchivo {
         try {
             File filename = new File(archivo.getPath());
             ObjectOutputStream escribir = new ObjectOutputStream(new FileOutputStream(filename));
-            escribir.writeObject(investigador);
+            escribir.writeObject(investigadores);
             escribir.close();
+            /*
+            File filename = new File(archivo_inv.getPath());
+            ObjectOutputStream escribir = new ObjectOutputStream(new FileOutputStream(filename, true));
+            escribir.writeObject(investigador);
+            escribir.close();*/
 
         } catch (IOException e) {
 
