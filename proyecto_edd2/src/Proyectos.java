@@ -1,3 +1,6 @@
+
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,7 +11,7 @@
  *
  * @author ricky
  */
-public class Proyectos {
+public class Proyectos implements Serializable{
     
     int codigo;
     String nombre;
@@ -24,6 +27,10 @@ public class Proyectos {
         this.fecha_ini = fecha_ini;
         this.fecha_fin = fecha_fin;
         this.estado = estado;
+    }
+    
+    Proyectos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getCodigo() {
@@ -73,13 +80,4 @@ public class Proyectos {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-
-    @Override
-    public String toString() {
-        return "Proyectos{" + "codigo=" + codigo + ", nombre=" + nombre + ", investigador=" + investigador + ", fecha_ini=" + 
-        fecha_ini + ", fecha_fin=" + fecha_fin + ", estado=" + estado + '}';
-    }
-    
-    
-    
 }

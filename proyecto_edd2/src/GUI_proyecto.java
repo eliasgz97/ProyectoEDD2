@@ -1,5 +1,4 @@
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,6 +27,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Text;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -39,23 +39,16 @@ import org.w3c.dom.Text;
  * @author ricky
  */
 public class GUI_proyecto extends javax.swing.JFrame {
+
     Investigadores investigador;
     AdmArchivo ap;
     JFileChooser seleccionar = new JFileChooser();
-     FileOutputStream salida;   
+    FileOutputStream salida;
     File archivo2;
-    int rrn=0;
+    int rrn = 0;
     String nombreArchivo;
-    Btree arbol= new Btree (5);
-    public GUI_proyecto() {
-        initComponents();
-     if (seleccionar.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
-            archivo2 = seleccionar.getSelectedFile();
-            nombreArchivo = GuardarArchivo();
-            JOptionPane.showMessageDialog(this, "El archivo fue guardado exitosamente");
-            ap = new AdmArchivo(nombreArchivo);
-        }
-    }
+    Btree arbol = new Btree(5);
+
     public String GuardarArchivo() {
         String nombreArchivo2 = "";
         try {
@@ -65,8 +58,43 @@ public class GUI_proyecto extends javax.swing.JFrame {
         }
         return nombreArchivo2;
     }
-   
-    
+    //------------------------------------------------------------------------------------------
+    Proyectos proyecto;
+    AdmArchivo2 ap2;
+    JFileChooser seleccionar2 = new JFileChooser();
+    FileOutputStream salida2;
+    File archivo3;
+    int rrn2 = 0;
+    String nombreArchivo2;
+    Btree arbol2 = new Btree(5);
+
+    public String GuardarArchivo2() {
+        String nombreArchivo3 = "";
+        try {
+            salida2 = new FileOutputStream(archivo3);
+            nombreArchivo3 = seleccionar2.getSelectedFile().getPath();
+        } catch (Exception e) {
+        }
+        return nombreArchivo3;
+    }
+
+    public GUI_proyecto() {
+        initComponents();
+        if (seleccionar.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
+            archivo2 = seleccionar.getSelectedFile();
+            nombreArchivo = GuardarArchivo();
+            JOptionPane.showMessageDialog(this, "El archivo fue guardado exitosamente");
+            ap = new AdmArchivo(nombreArchivo);
+        }
+
+        if (seleccionar2.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
+            archivo3 = seleccionar2.getSelectedFile();
+            nombreArchivo2 = GuardarArchivo2();
+            JOptionPane.showMessageDialog(this, "El archivo fue guardado exitosamente");
+            ap2 = new AdmArchivo2(nombreArchivo2);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,7 +119,8 @@ public class GUI_proyecto extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jcb_estado_proyecto = new javax.swing.JComboBox<>();
         jtxt_codigo_proyecto = new javax.swing.JTextField();
-        jbt_guardarproyecto = new javax.swing.JButton();
+        jbt_agregar_proyecto = new javax.swing.JButton();
+        jbt_buscar_proyecto = new javax.swing.JButton();
         Publicaciones = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -128,7 +157,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
         jtxt_code_carrera = new javax.swing.JTextField();
         jcb_estado_investigador = new javax.swing.JComboBox<>();
         jbt_agregar_investigador = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbt_buscar_investigador = new javax.swing.JButton();
         jbt_carreras = new javax.swing.JButton();
         jbt_investigadores = new javax.swing.JButton();
         jbt_proyectos = new javax.swing.JButton();
@@ -157,11 +186,19 @@ public class GUI_proyecto extends javax.swing.JFrame {
 
         jcb_estado_proyecto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Iniciado", "Cancelado", "Publicado", "Rechazado" }));
 
-        jbt_guardarproyecto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jbt_guardarproyecto.setText("AGREGAR");
-        jbt_guardarproyecto.addMouseListener(new java.awt.event.MouseAdapter() {
+        jbt_agregar_proyecto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jbt_agregar_proyecto.setText("AGREGAR");
+        jbt_agregar_proyecto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jbt_guardarproyectoMouseClicked(evt);
+                jbt_agregar_proyectoMouseClicked(evt);
+            }
+        });
+
+        jbt_buscar_proyecto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jbt_buscar_proyecto.setText("Buscar");
+        jbt_buscar_proyecto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbt_buscar_proyectoMouseClicked(evt);
             }
         });
 
@@ -174,24 +211,29 @@ public class GUI_proyecto extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(172, 172, 172)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtxt_nombreotema_proyecto)
-                            .addComponent(jtxt_investigador_proyectos)
-                            .addComponent(jtxt_fechainicio_proyecto)
-                            .addComponent(jtxt_fecha_finproyecto, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                            .addComponent(jcb_estado_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxt_codigo_proyecto)
-                            .addComponent(jbt_guardarproyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(54, 54, 54)
+                            .addComponent(jbt_agregar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                            .addComponent(jbt_buscar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(28, 28, 28)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel7))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jtxt_nombreotema_proyecto)
+                                .addComponent(jtxt_investigador_proyectos)
+                                .addComponent(jtxt_fechainicio_proyecto)
+                                .addComponent(jtxt_fecha_finproyecto, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                                .addComponent(jtxt_codigo_proyecto)
+                                .addComponent(jcb_estado_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -225,9 +267,11 @@ public class GUI_proyecto extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jcb_estado_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(jbt_guardarproyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbt_agregar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbt_buscar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ProyectosLayout = new javax.swing.GroupLayout(Proyectos.getContentPane());
@@ -441,26 +485,12 @@ public class GUI_proyecto extends javax.swing.JFrame {
                 jbt_agregar_investigadorMouseClicked(evt);
             }
         });
-        jbt_agregar_investigador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbt_agregar_investigadorActionPerformed(evt);
-            }
-        });
 
-        jButton1.setText("BUSCAR");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jbt_buscar_investigador.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jbt_buscar_investigador.setText("BUSCAR");
+        jbt_buscar_investigador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
+                jbt_buscar_investigadorMouseClicked(evt);
             }
         });
 
@@ -504,7 +534,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
                                         .addGap(32, 32, 32)))
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jcb_estado_investigador, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jbt_buscar_investigador, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -535,7 +565,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbt_agregar_investigador, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbt_buscar_investigador, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
 
@@ -631,22 +661,29 @@ public class GUI_proyecto extends javax.swing.JFrame {
     }//GEN-LAST:event_jbt_publicacionesMouseClicked
 
     private void jbt_guardar_publicacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_guardar_publicacionMouseClicked
-        
+
     }//GEN-LAST:event_jbt_guardar_publicacionMouseClicked
 
-    private void jbt_guardarproyectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_guardarproyectoMouseClicked
-        
-    }//GEN-LAST:event_jbt_guardarproyectoMouseClicked
+    private void jbt_agregar_proyectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_agregar_proyectoMouseClicked
+        ap2 = new AdmArchivo2(nombreArchivo2);
+        ap2.setRegistro(new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), jcb_estado_proyecto.getSelectedItem().toString()));
+        proyecto = new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), jcb_estado_proyecto.getSelectedItem().toString());
+        arbol2.insert(Integer.parseInt(jtxt_codigo_proyecto.getText()), rrn2);
+        rrn2++;
+        ap2.getProyectos().add(proyecto);
+        ap2.write_obj_registro();
+
+    }//GEN-LAST:event_jbt_agregar_proyectoMouseClicked
 
     private void jbt_agregar_investigadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_agregar_investigadorMouseClicked
-    ap=new AdmArchivo(nombreArchivo);
-    ap.setRegistro(new Investigadores(jtxt_nombre_investigador.getText(),Integer.parseInt(jtxt_codigo_investigador.getText()),jtxt_fecha_ingreso.getText(),jtxt_code_carrera.getText(),jcb_estado_carrera.getSelectedItem().toString(),rrn));
-    investigador= new Investigadores(jtxt_nombre_investigador.getText(),Integer.parseInt(jtxt_codigo_investigador.getText()),jtxt_fecha_ingreso.getText(),jtxt_code_carrera.getText(),jcb_estado_carrera.getSelectedItem().toString(),rrn);
-    arbol.insert(Integer.parseInt(jtxt_codigo_investigador.getText()),rrn);
-    rrn++;
-    ap.getInvestigadores().add(investigador);
-    ap.write_obj_registro();
-    
+        ap = new AdmArchivo(nombreArchivo);
+        ap.setRegistro(new Investigadores(jtxt_nombre_investigador.getText(), Integer.parseInt(jtxt_codigo_investigador.getText()), jtxt_fecha_ingreso.getText(), jtxt_code_carrera.getText(), jcb_estado_carrera.getSelectedItem().toString(), rrn));
+        investigador = new Investigadores(jtxt_nombre_investigador.getText(), Integer.parseInt(jtxt_codigo_investigador.getText()), jtxt_fecha_ingreso.getText(), jtxt_code_carrera.getText(), jcb_estado_carrera.getSelectedItem().toString(), rrn);
+        arbol.insert(Integer.parseInt(jtxt_codigo_investigador.getText()), rrn);
+        rrn++;
+        ap.getInvestigadores().add(investigador);
+        ap.write_obj_registro();
+
     }//GEN-LAST:event_jbt_agregar_investigadorMouseClicked
 
     private void jbt_carrerasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_carrerasMouseClicked
@@ -656,51 +693,64 @@ public class GUI_proyecto extends javax.swing.JFrame {
         Carreras.setVisible(true);
     }//GEN-LAST:event_jbt_carrerasMouseClicked
 
-   
+
     private void jbt_investigadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_investigadoresMouseClicked
-              Investigadores.setModal(true);
+        Investigadores.setModal(true);
         Investigadores.pack();
         Investigadores.setLocationRelativeTo(this);
         Investigadores.setVisible(true);
         ap.write_arbol();
     }//GEN-LAST:event_jbt_investigadoresMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void jbt_buscar_investigadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_buscar_investigadorMouseClicked
         int keycode = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el codigo del investigador"));
         ap.setArbol(arbol);
-       if (ap.getArbol().search(ap.getArbol().root, keycode) == -1) {
+        if (ap.getArbol().search(ap.getArbol().root, keycode) == -1) {
             JOptionPane.showMessageDialog(null, "Registro no encontrado");
         } else {
-           System.out.println("encontrado");
-        File filename = new File("reg.bin");
-        try {
-            ap.read_registro_in_bytes(ap.getArbol().search(ap.getArbol().root, keycode), (int) filename.length());//encuentra la llave y nos devuelve el RRN asociado - multiplicamos por el tamaño del registro para encontrar la posicion exacta
-            ap.write_registro_innewfile();  
-            investigador= ap.read_obj_registro();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_proyecto.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-         //System.out.println(ap.getInvestigadores().get(arbol.search(ap.getArbol().root, keycode)).getNombreInvestigador());
+            System.out.println("encontrado");
+            File filename = new File("reg.bin");
+            try {
+                ap.read_registro_in_bytes(ap.getArbol().search(ap.getArbol().root, keycode), (int) filename.length());//encuentra la llave y nos devuelve el RRN asociado - multiplicamos por el tamaño del registro para encontrar la posicion exacta
+                ap.write_registro_innewfile();
+                investigador = ap.read_obj_registro();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUI_proyecto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            //System.out.println(ap.getInvestigadores().get(arbol.search(ap.getArbol().root, keycode)).getNombreInvestigador());
             jtxt_nombre_investigador.setText(investigador.getNombreInvestigador());
-            jtxt_codigo_investigador.setText(investigador.getCodigo()+"");
+            jtxt_codigo_investigador.setText(investigador.getCodigo() + "");
             jtxt_fecha_ingreso.setText(investigador.getFechaIngreso());
             jtxt_code_carrera.setText(investigador.getCodigoCarrera());
             jcb_estado_carrera.setSelectedItem(investigador.getEstado());
-       }
-    }//GEN-LAST:event_jButton1MouseClicked
+        }
+    }//GEN-LAST:event_jbt_buscar_investigadorMouseClicked
 
-    private void jbt_agregar_investigadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_agregar_investigadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbt_agregar_investigadorActionPerformed
+    private void jbt_buscar_proyectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_buscar_proyectoMouseClicked
+        int keycode = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el codigo del investigador"));
+        ap2.setArbol(arbol);
+        if (ap2.getArbol().search(ap2.getArbol().root, keycode) == -1) {
+            JOptionPane.showMessageDialog(null, "Registro no encontrado");
+        } else {
+            System.out.println("encontrado");
+            File filename = new File("reg2.bin");
+            try {
+                ap2.read_registro_in_bytes(ap2.getArbol().search(ap2.getArbol().root, keycode), (int) filename.length());//encuentra la llave y nos devuelve el RRN asociado - multiplicamos por el tamaño del registro para encontrar la posicion exacta
+                ap2.write_registro_innewfile();
+                proyecto = ap2.read_obj_registro();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUI_proyecto.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1KeyPressed
+            jtxt_codigo_proyecto.setText(proyecto.getCodigo() + "");
+            jtxt_nombreotema_proyecto.setText(proyecto.getNombre());
+            jtxt_investigador_proyectos.setText(proyecto.getInvestigador() + "");
+            jtxt_fechainicio_proyecto.setText(proyecto.getFecha_ini());
+            jtxt_fecha_finproyecto.setText(proyecto.getFecha_fin());
+            jcb_estado_proyecto.setSelectedItem(proyecto.getEstado());
+        }
+    }//GEN-LAST:event_jbt_buscar_proyectoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -742,7 +792,6 @@ public class GUI_proyecto extends javax.swing.JFrame {
     private javax.swing.JDialog Investigadores;
     private javax.swing.JDialog Proyectos;
     private javax.swing.JDialog Publicaciones;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -771,9 +820,11 @@ public class GUI_proyecto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JButton jbt_agregar_carrera;
     private javax.swing.JButton jbt_agregar_investigador;
+    private javax.swing.JButton jbt_agregar_proyecto;
+    private javax.swing.JButton jbt_buscar_investigador;
+    private javax.swing.JButton jbt_buscar_proyecto;
     private javax.swing.JButton jbt_carreras;
     private javax.swing.JButton jbt_guardar_publicacion;
-    private javax.swing.JButton jbt_guardarproyecto;
     private javax.swing.JButton jbt_investigadores;
     private javax.swing.JButton jbt_proyectos;
     private javax.swing.JButton jbt_publicaciones;
