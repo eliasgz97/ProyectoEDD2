@@ -41,38 +41,38 @@ import org.w3c.dom.Text;
 public class GUI_proyecto extends javax.swing.JFrame {
 
     Investigadores investigador;
-    AdmArchivo ap;
-    JFileChooser seleccionar = new JFileChooser();
+    AdmArchivo apinvestigador;
+    JFileChooser seleccionarinvestigador = new JFileChooser();
     FileOutputStream salida;
     File archivo2;
     int rrn = 0;
     String nombreArchivo;
-    Btree arbol = new Btree(5);
+    Btree arbolinvestigador = new Btree(5);
 
     public String GuardarArchivo() {
         String nombreArchivo2 = "";
         try {
             salida = new FileOutputStream(archivo2);
-            nombreArchivo2 = seleccionar.getSelectedFile().getPath();
+            nombreArchivo2 = seleccionarinvestigador.getSelectedFile().getPath();
         } catch (Exception e) {
         }
         return nombreArchivo2;
     }
     //------------------------------------------------------------------------------------------
     Proyectos proyecto;
-    AdmArchivo2 ap2;
-    JFileChooser seleccionar2 = new JFileChooser();
+    AdmArchivo2 approyecto;
+    JFileChooser seleccionarproyecto = new JFileChooser();
     FileOutputStream salida2;
     File archivo3;
     int rrn2 = 0;
     String nombreArchivo2;
-    Btree arbol2 = new Btree(5);
+    Btree arbolproyectos = new Btree(5);
 
     public String GuardarArchivo2() {
         String nombreArchivo3 = "";
         try {
             salida2 = new FileOutputStream(archivo3);
-            nombreArchivo3 = seleccionar2.getSelectedFile().getPath();
+            nombreArchivo3 = seleccionarproyecto.getSelectedFile().getPath();
         } catch (Exception e) {
         }
         return nombreArchivo3;
@@ -80,18 +80,18 @@ public class GUI_proyecto extends javax.swing.JFrame {
 
     public GUI_proyecto() {
         initComponents();
-        if (seleccionar.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
-            archivo2 = seleccionar.getSelectedFile();
+        if (seleccionarinvestigador.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
+            archivo2 = seleccionarinvestigador.getSelectedFile();
             nombreArchivo = GuardarArchivo();
             JOptionPane.showMessageDialog(this, "El archivo fue guardado exitosamente");
-            ap = new AdmArchivo(nombreArchivo);
+            apinvestigador = new AdmArchivo(nombreArchivo);
         }
 
-        if (seleccionar2.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
-            archivo3 = seleccionar2.getSelectedFile();
+        if (seleccionarproyecto.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
+            archivo3 = seleccionarproyecto.getSelectedFile();
             nombreArchivo2 = GuardarArchivo2();
             JOptionPane.showMessageDialog(this, "El archivo fue guardado exitosamente");
-            ap2 = new AdmArchivo2(nombreArchivo2);
+            approyecto = new AdmArchivo2(nombreArchivo2);
         }
     }
 
@@ -665,24 +665,24 @@ public class GUI_proyecto extends javax.swing.JFrame {
     }//GEN-LAST:event_jbt_guardar_publicacionMouseClicked
 
     private void jbt_agregar_proyectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_agregar_proyectoMouseClicked
-        ap2 = new AdmArchivo2(nombreArchivo2);
-        ap2.setRegistro(new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), jcb_estado_proyecto.getSelectedItem().toString()));
+        approyecto = new AdmArchivo2(nombreArchivo2);
+        approyecto.setRegistro(new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), jcb_estado_proyecto.getSelectedItem().toString()));
         proyecto = new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), jcb_estado_proyecto.getSelectedItem().toString());
-        arbol2.insert(Integer.parseInt(jtxt_codigo_proyecto.getText()), rrn2);
+        arbolproyectos.insert(Integer.parseInt(jtxt_codigo_proyecto.getText()), rrn2);
         rrn2++;
-        ap2.getProyectos().add(proyecto);
-        ap2.write_obj_registro();
+        approyecto.getProyectos().add(proyecto);
+        approyecto.write_obj_registro();
 
     }//GEN-LAST:event_jbt_agregar_proyectoMouseClicked
 
     private void jbt_agregar_investigadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_agregar_investigadorMouseClicked
-        ap = new AdmArchivo(nombreArchivo);
-        ap.setRegistro(new Investigadores(jtxt_nombre_investigador.getText(), Integer.parseInt(jtxt_codigo_investigador.getText()), jtxt_fecha_ingreso.getText(), jtxt_code_carrera.getText(), jcb_estado_carrera.getSelectedItem().toString(), rrn));
+        apinvestigador = new AdmArchivo(nombreArchivo);
+        apinvestigador.setRegistro(new Investigadores(jtxt_nombre_investigador.getText(), Integer.parseInt(jtxt_codigo_investigador.getText()), jtxt_fecha_ingreso.getText(), jtxt_code_carrera.getText(), jcb_estado_carrera.getSelectedItem().toString(), rrn));
         investigador = new Investigadores(jtxt_nombre_investigador.getText(), Integer.parseInt(jtxt_codigo_investigador.getText()), jtxt_fecha_ingreso.getText(), jtxt_code_carrera.getText(), jcb_estado_carrera.getSelectedItem().toString(), rrn);
-        arbol.insert(Integer.parseInt(jtxt_codigo_investigador.getText()), rrn);
+        arbolinvestigador.insert(Integer.parseInt(jtxt_codigo_investigador.getText()), rrn);
         rrn++;
-        ap.getInvestigadores().add(investigador);
-        ap.write_obj_registro();
+        apinvestigador.getInvestigadores().add(investigador);
+        apinvestigador.write_obj_registro();
 
     }//GEN-LAST:event_jbt_agregar_investigadorMouseClicked
 
@@ -699,21 +699,21 @@ public class GUI_proyecto extends javax.swing.JFrame {
         Investigadores.pack();
         Investigadores.setLocationRelativeTo(this);
         Investigadores.setVisible(true);
-        ap.write_arbol();
+        apinvestigador.write_arbol();
     }//GEN-LAST:event_jbt_investigadoresMouseClicked
 
     private void jbt_buscar_investigadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_buscar_investigadorMouseClicked
         int keycode = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el codigo del investigador"));
-        ap.setArbol(arbol);
-        if (ap.getArbol().search(ap.getArbol().root, keycode) == -1) {
+        apinvestigador.setArbol(arbolinvestigador);
+        if (apinvestigador.getArbol().search(apinvestigador.getArbol().root, keycode) == -1) {
             JOptionPane.showMessageDialog(null, "Registro no encontrado");
         } else {
             System.out.println("encontrado");
             File filename = new File("reg.bin");
             try {
-                ap.read_registro_in_bytes(ap.getArbol().search(ap.getArbol().root, keycode), (int) filename.length());//encuentra la llave y nos devuelve el RRN asociado - multiplicamos por el tamaño del registro para encontrar la posicion exacta
-                ap.write_registro_innewfile();
-                investigador = ap.read_obj_registro();
+                apinvestigador.read_registro_in_bytes(apinvestigador.getArbol().search(apinvestigador.getArbol().root, keycode), (int) filename.length());//encuentra la llave y nos devuelve el RRN asociado - multiplicamos por el tamaño del registro para encontrar la posicion exacta
+                apinvestigador.write_registro_innewfile();
+                investigador = apinvestigador.read_obj_registro();
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUI_proyecto.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -723,22 +723,26 @@ public class GUI_proyecto extends javax.swing.JFrame {
             jtxt_codigo_investigador.setText(investigador.getCodigo() + "");
             jtxt_fecha_ingreso.setText(investigador.getFechaIngreso());
             jtxt_code_carrera.setText(investigador.getCodigoCarrera());
-            jcb_estado_carrera.setSelectedItem(investigador.getEstado());
+            if (investigador.getEstado().equals( "Activo")) {
+                jcb_estado_carrera.setSelectedItem(0);
+            } else if (investigador.getEstado().equals("Inactivo")) {
+                jcb_estado_carrera.setSelectedItem(1);
+            } 
         }
     }//GEN-LAST:event_jbt_buscar_investigadorMouseClicked
 
     private void jbt_buscar_proyectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_buscar_proyectoMouseClicked
-        int keycode = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el codigo del investigador"));
-        ap2.setArbol(arbol);
-        if (ap2.getArbol().search(ap2.getArbol().root, keycode) == -1) {
+        int keycode = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el codigo del proyecto"));
+        approyecto.setArbol(arbolproyectos);
+        if (approyecto.getArbol().search(approyecto.getArbol().root, keycode) == -1) {
             JOptionPane.showMessageDialog(null, "Registro no encontrado");
         } else {
             System.out.println("encontrado");
             File filename = new File("reg2.bin");
             try {
-                ap2.read_registro_in_bytes(ap2.getArbol().search(ap2.getArbol().root, keycode), (int) filename.length());//encuentra la llave y nos devuelve el RRN asociado - multiplicamos por el tamaño del registro para encontrar la posicion exacta
-                ap2.write_registro_innewfile();
-                proyecto = ap2.read_obj_registro();
+                approyecto.read_registro_in_bytes(approyecto.getArbol().search(approyecto.getArbol().root, keycode), (int) filename.length());//encuentra la llave y nos devuelve el RRN asociado - multiplicamos por el tamaño del registro para encontrar la posicion exacta
+                approyecto.write_registro_innewfile();
+                proyecto = approyecto.read_obj_registro();
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUI_proyecto.class.getName()).log(Level.SEVERE, null, ex);
             }

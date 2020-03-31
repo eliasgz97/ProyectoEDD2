@@ -1,12 +1,13 @@
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 
 public class Investigadores implements Serializable {
     int codigo;
     String NombreInvestigador="";
     String FechaIngreso="";
     String CodigoCarrera="";
+    ArrayList<Proyectos> proyectos = new ArrayList();
     String estado;
     int RRN;
 
