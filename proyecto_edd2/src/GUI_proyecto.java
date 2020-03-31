@@ -33,7 +33,6 @@ import org.w3c.dom.Text;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ricky
@@ -48,6 +47,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
     int rrn = 0;
     String nombreArchivo;
     Btree arbolinvestigador = new Btree(5);
+    ArrayList<Carreras> carreras = new ArrayList();
 
     public String GuardarArchivo() {
         String nombreArchivo2 = "";
@@ -695,11 +695,16 @@ public class GUI_proyecto extends javax.swing.JFrame {
 
 
     private void jbt_investigadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_investigadoresMouseClicked
-        Investigadores.setModal(true);
-        Investigadores.pack();
-        Investigadores.setLocationRelativeTo(this);
-        Investigadores.setVisible(true);
-        apinvestigador.write_arbol();
+
+        if (carreras.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que crear una Carrera primero");
+        } else {
+            Investigadores.setModal(true);
+            Investigadores.pack();
+            Investigadores.setLocationRelativeTo(this);
+            Investigadores.setVisible(true);
+            apinvestigador.write_arbol();
+        }
     }//GEN-LAST:event_jbt_investigadoresMouseClicked
 
     private void jbt_buscar_investigadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_buscar_investigadorMouseClicked
@@ -723,11 +728,11 @@ public class GUI_proyecto extends javax.swing.JFrame {
             jtxt_codigo_investigador.setText(investigador.getCodigo() + "");
             jtxt_fecha_ingreso.setText(investigador.getFechaIngreso());
             jtxt_code_carrera.setText(investigador.getCodigoCarrera());
-            if (investigador.getEstado().equals( "Activo")) {
+            if (investigador.getEstado().equals("Activo")) {
                 jcb_estado_carrera.setSelectedItem(0);
             } else if (investigador.getEstado().equals("Inactivo")) {
                 jcb_estado_carrera.setSelectedItem(1);
-            } 
+            }
         }
     }//GEN-LAST:event_jbt_buscar_investigadorMouseClicked
 
