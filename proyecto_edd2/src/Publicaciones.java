@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 
 public class Publicaciones {
     int cod_public;
     int cod_proy;
     String fecha_publi;
     String revista_conf;
+    ArrayList<Proyectos> proyectos = new ArrayList();
 
     public Publicaciones(int cod_public, int cod_proy, String fecha_publi, String revista_conf) {
         this.cod_public = cod_public;

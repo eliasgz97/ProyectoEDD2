@@ -23,7 +23,14 @@ public class Investigadores implements Serializable {
     Investigadores() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    public ArrayList<Proyectos> getProyectos() {
+        return proyectos;
+    }
+
+    public void setProyectos(ArrayList<Proyectos> proyectos) {
+        this.proyectos = proyectos;
+    }
     public int getCodigo() {
         return codigo;
     }

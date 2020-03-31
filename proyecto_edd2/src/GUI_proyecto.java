@@ -1,32 +1,12 @@
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JFileChooser;
-import javax.swing.text.html.parser.Element;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.Text;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -48,7 +28,10 @@ public class GUI_proyecto extends javax.swing.JFrame {
     String nombreArchivo;
     Btree arbolinvestigador = new Btree(5);
     ArrayList<Carreras> carreras = new ArrayList();
-
+    int contadorproyectos = 0;
+    ArrayList<Proyectos> publicados = new ArrayList();
+    ArrayList<Proyectos> proyectos = new ArrayList();
+    ArrayList<Publicaciones> publicaciones = new ArrayList();
     public String GuardarArchivo() {
         String nombreArchivo2 = "";
         try {
@@ -93,6 +76,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El archivo fue guardado exitosamente");
             approyecto = new AdmArchivo2(nombreArchivo2);
         }
+        jbt_verproyectos.setEnabled(false);
     }
 
     /**
@@ -127,7 +111,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jtxt_codigo_publicacion = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jtxt_proyecto_codigo = new javax.swing.JTextField();
+        codigopublicacion = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jtxt_fecha_publicaciones = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -158,6 +142,11 @@ public class GUI_proyecto extends javax.swing.JFrame {
         jcb_estado_investigador = new javax.swing.JComboBox<>();
         jbt_agregar_investigador = new javax.swing.JButton();
         jbt_buscar_investigador = new javax.swing.JButton();
+        jbt_verproyectos = new javax.swing.JButton();
+        ListarProyectos = new javax.swing.JDialog();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jlist_proyectos = new javax.swing.JList<>();
         jbt_carreras = new javax.swing.JButton();
         jbt_investigadores = new javax.swing.JButton();
         jbt_proyectos = new javax.swing.JButton();
@@ -173,7 +162,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
         jLabel3.setText("NOMBRE/TEMA");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("INVESTIGADOR");
+        jLabel4.setText("CÓDIGO INVESTIGADOR");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("FECHA INICIO");
@@ -184,7 +173,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("ESTADO");
 
-        jcb_estado_proyecto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Iniciado", "Cancelado", "Publicado", "Rechazado" }));
+        jcb_estado_proyecto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Iniciado", "Enviado", "Publicado", "Rechazado", " " }));
 
         jbt_agregar_proyecto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jbt_agregar_proyecto.setText("AGREGAR");
@@ -195,7 +184,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
         });
 
         jbt_buscar_proyecto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jbt_buscar_proyecto.setText("Buscar");
+        jbt_buscar_proyecto.setText("BUSCAR");
         jbt_buscar_proyecto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbt_buscar_proyectoMouseClicked(evt);
@@ -209,39 +198,38 @@ public class GUI_proyecto extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jbt_agregar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(171, 171, 171)
+                        .addComponent(jbt_buscar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(172, 172, 172)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(54, 54, 54)
-                            .addComponent(jbt_agregar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                            .addComponent(jbt_buscar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(28, 28, 28)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtxt_nombreotema_proyecto)
-                                .addComponent(jtxt_investigador_proyectos)
-                                .addComponent(jtxt_fechainicio_proyecto)
-                                .addComponent(jtxt_fecha_finproyecto, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                .addComponent(jtxt_codigo_proyecto)
-                                .addComponent(jcb_estado_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(109, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtxt_nombreotema_proyecto)
+                            .addComponent(jtxt_investigador_proyectos)
+                            .addComponent(jtxt_fechainicio_proyecto)
+                            .addComponent(jtxt_fecha_finproyecto)
+                            .addComponent(jtxt_codigo_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcb_estado_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(54, 54, 54)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -267,10 +255,10 @@ public class GUI_proyecto extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jcb_estado_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbt_agregar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbt_buscar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbt_buscar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbt_agregar_proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
@@ -328,7 +316,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
                             .addComponent(jLabel12))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtxt_proyecto_codigo)
+                            .addComponent(codigopublicacion)
                             .addComponent(jtxt_codigo_publicacion)
                             .addComponent(jtxt_fecha_publicaciones)
                             .addComponent(jcbox_tipo_publicacion, 0, 149, Short.MAX_VALUE))))
@@ -350,7 +338,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jtxt_proyecto_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(codigopublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -392,6 +380,11 @@ public class GUI_proyecto extends javax.swing.JFrame {
         jcb_estado_carrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
 
         jbt_agregar_carrera.setText("AGREGAR");
+        jbt_agregar_carrera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbt_agregar_carreraMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -494,6 +487,14 @@ public class GUI_proyecto extends javax.swing.JFrame {
             }
         });
 
+        jbt_verproyectos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jbt_verproyectos.setText("Ver Proyectos");
+        jbt_verproyectos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbt_verproyectosMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -534,7 +535,10 @@ public class GUI_proyecto extends javax.swing.JFrame {
                                         .addGap(32, 32, 32)))
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jcb_estado_investigador, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jbt_buscar_investigador, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jbt_buscar_investigador, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(jbt_verproyectos)))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -566,7 +570,9 @@ public class GUI_proyecto extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbt_agregar_investigador, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbt_buscar_investigador, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jbt_verproyectos)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout InvestigadoresLayout = new javax.swing.GroupLayout(Investigadores.getContentPane());
@@ -578,6 +584,31 @@ public class GUI_proyecto extends javax.swing.JFrame {
         InvestigadoresLayout.setVerticalGroup(
             InvestigadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jlist_proyectos.setModel(new DefaultListModel());
+        jScrollPane1.setViewportView(jlist_proyectos);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout ListarProyectosLayout = new javax.swing.GroupLayout(ListarProyectos.getContentPane());
+        ListarProyectos.getContentPane().setLayout(ListarProyectosLayout);
+        ListarProyectosLayout.setHorizontalGroup(
+            ListarProyectosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        ListarProyectosLayout.setVerticalGroup(
+            ListarProyectosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -595,6 +626,11 @@ public class GUI_proyecto extends javax.swing.JFrame {
         jbt_investigadores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbt_investigadoresMouseClicked(evt);
+            }
+        });
+        jbt_investigadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbt_investigadoresActionPerformed(evt);
             }
         });
 
@@ -651,6 +687,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
         Proyectos.pack();
         Proyectos.setLocationRelativeTo(this);
         Proyectos.setVisible(true);
+        approyecto.write_arbol();
     }//GEN-LAST:event_jbt_proyectosMouseClicked
 
     private void jbt_publicacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_publicacionesMouseClicked
@@ -661,18 +698,57 @@ public class GUI_proyecto extends javax.swing.JFrame {
     }//GEN-LAST:event_jbt_publicacionesMouseClicked
 
     private void jbt_guardar_publicacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_guardar_publicacionMouseClicked
-
+        approyecto.setArbol(arbolproyectos);
+        int keyproyectopublicado = Integer.parseInt(codigopublicacion.getText());
+        int key = approyecto.getArbol().search(approyecto.getArbol().root, keyproyectopublicado);
+        System.out.println(approyecto.getArbol().search(approyecto.getArbol().root, keyproyectopublicado));
+        if (publicados.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No existen proyectos publicados");
+        }       
+        else if (proyectos.get(key).getEstado().equals("Publicado")){
+            publicaciones.add(new Publicaciones(Integer.parseInt(jtxt_codigo_publicacion.getText()), Integer.parseInt(codigopublicacion.getText()), jtxt_fecha_publicaciones.getText(), jcbox_tipo_publicacion.getSelectedItem().toString()));
+            JOptionPane.showMessageDialog(null, "Publicación Agregada");
+        } else {
+            JOptionPane.showMessageDialog(null, "El proyecto no está publicado");
+        }
     }//GEN-LAST:event_jbt_guardar_publicacionMouseClicked
 
     private void jbt_agregar_proyectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_agregar_proyectoMouseClicked
         approyecto = new AdmArchivo2(nombreArchivo2);
-        approyecto.setRegistro(new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), jcb_estado_proyecto.getSelectedItem().toString()));
-        proyecto = new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), jcb_estado_proyecto.getSelectedItem().toString());
-        arbolproyectos.insert(Integer.parseInt(jtxt_codigo_proyecto.getText()), rrn2);
+        if (jcb_estado_proyecto.getSelectedIndex() == 0) {
+            approyecto.setRegistro(new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), "Iniciado"));
+            proyecto = new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), "Iniciado");
+            arbolproyectos.insert(Integer.parseInt(jtxt_codigo_proyecto.getText()), rrn2);
+        }  else if(jcb_estado_proyecto.getSelectedIndex() == 1){
+            approyecto.setRegistro(new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), "Enviado"));
+            proyecto = new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), "Enviado");
+            arbolproyectos.insert(Integer.parseInt(jtxt_codigo_proyecto.getText()), rrn2);
+        } else if(jcb_estado_proyecto.getSelectedIndex() == 2){
+            approyecto.setRegistro(new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), "Publicado"));
+            proyecto = new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), "Publicado");
+            arbolproyectos.insert(Integer.parseInt(jtxt_codigo_proyecto.getText()), rrn2);
+        } else if (jcb_estado_proyecto.getSelectedIndex() == 3){
+            approyecto.setRegistro(new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), "Rechazado"));
+            proyecto = new Proyectos(Integer.parseInt(jtxt_codigo_proyecto.getText()), jtxt_nombreotema_proyecto.getText(), Integer.parseInt(jtxt_investigador_proyectos.getText()), jtxt_fechainicio_proyecto.getText(), jtxt_fecha_finproyecto.getText(), "Rechazado");
+            arbolproyectos.insert(Integer.parseInt(jtxt_codigo_proyecto.getText()), rrn2);
+        }
         rrn2++;
         approyecto.getProyectos().add(proyecto);
+        proyectos.add(proyecto);
+        System.out.println(proyecto.getEstado());
+        if (proyecto.estado.equals("Publicado")) {
+            publicados.add(proyecto);
+        }
+        DefaultListModel modelo = (DefaultListModel) jlist_proyectos.getModel();
+        modelo.addElement(proyecto);
+        jlist_proyectos.setModel(modelo);
         approyecto.write_obj_registro();
-
+        approyecto.setArbol(arbolproyectos);
+        apinvestigador.setArbol(arbolinvestigador);
+        apinvestigador.getInvestigadores().get(apinvestigador.getArbol().search(apinvestigador.getArbol().root, Integer.parseInt(jtxt_investigador_proyectos.getText()))).getProyectos().add(proyecto);
+        contadorproyectos++;
+        JOptionPane.showMessageDialog(null, "Proyecto agregado");
+        jbt_verproyectos.setEnabled(true);
     }//GEN-LAST:event_jbt_agregar_proyectoMouseClicked
 
     private void jbt_agregar_investigadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_agregar_investigadorMouseClicked
@@ -683,7 +759,7 @@ public class GUI_proyecto extends javax.swing.JFrame {
         rrn++;
         apinvestigador.getInvestigadores().add(investigador);
         apinvestigador.write_obj_registro();
-
+        JOptionPane.showMessageDialog(null, "Investigador agregado");
     }//GEN-LAST:event_jbt_agregar_investigadorMouseClicked
 
     private void jbt_carrerasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_carrerasMouseClicked
@@ -761,6 +837,22 @@ public class GUI_proyecto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbt_buscar_proyectoMouseClicked
 
+    private void jbt_agregar_carreraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_agregar_carreraMouseClicked
+        carreras.add(new Carreras(Integer.parseInt(jtxt_codigo_carrera.getText()), jtxt_nombre_carrera.getText(), jcb_estado_carrera.getSelectedItem().toString()));
+        JOptionPane.showMessageDialog(null, "Carrera agregada");
+    }//GEN-LAST:event_jbt_agregar_carreraMouseClicked
+
+    private void jbt_verproyectosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbt_verproyectosMouseClicked
+        ListarProyectos.setModal(true);
+        ListarProyectos.pack();
+        ListarProyectos.setLocationRelativeTo(this);
+        ListarProyectos.setVisible(true);
+    }//GEN-LAST:event_jbt_verproyectosMouseClicked
+
+    private void jbt_investigadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_investigadoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbt_investigadoresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -799,8 +891,10 @@ public class GUI_proyecto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Carreras;
     private javax.swing.JDialog Investigadores;
+    private javax.swing.JDialog ListarProyectos;
     private javax.swing.JDialog Proyectos;
     private javax.swing.JDialog Publicaciones;
+    private javax.swing.JTextField codigopublicacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -827,6 +921,8 @@ public class GUI_proyecto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbt_agregar_carrera;
     private javax.swing.JButton jbt_agregar_investigador;
     private javax.swing.JButton jbt_agregar_proyecto;
@@ -837,10 +933,12 @@ public class GUI_proyecto extends javax.swing.JFrame {
     private javax.swing.JButton jbt_investigadores;
     private javax.swing.JButton jbt_proyectos;
     private javax.swing.JButton jbt_publicaciones;
+    private javax.swing.JButton jbt_verproyectos;
     private javax.swing.JComboBox<String> jcb_estado_carrera;
     private javax.swing.JComboBox<String> jcb_estado_investigador;
     private javax.swing.JComboBox<String> jcb_estado_proyecto;
     private javax.swing.JComboBox<String> jcbox_tipo_publicacion;
+    private javax.swing.JList<String> jlist_proyectos;
     private javax.swing.JTextField jtxt_code_carrera;
     private javax.swing.JTextField jtxt_codigo_carrera;
     private javax.swing.JTextField jtxt_codigo_investigador;
@@ -854,7 +952,6 @@ public class GUI_proyecto extends javax.swing.JFrame {
     private javax.swing.JTextField jtxt_nombre_carrera;
     private javax.swing.JTextField jtxt_nombre_investigador;
     private javax.swing.JTextField jtxt_nombreotema_proyecto;
-    private javax.swing.JTextField jtxt_proyecto_codigo;
     // End of variables declaration//GEN-END:variables
 
 }
